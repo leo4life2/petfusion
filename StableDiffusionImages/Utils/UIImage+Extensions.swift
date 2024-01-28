@@ -2,7 +2,7 @@
 //  UIImage+Resize.swift
 //  TestGenerativeImages
 //
-//  Created by Michael Zhu on 11/17/23.
+//  Created by fdsa on 11/17/23.
 //
 
 import SwiftUI
@@ -60,5 +60,17 @@ extension UIImage {
         UIGraphicsEndImageContext()
 
         return newImage
+    }
+    
+    static func createBlankWhiteImage(width: Int, height: Int) -> UIImage {
+        let size = CGSize(width: width, height: height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        UIColor.white.setFill()
+        UIRectFill(CGRect(origin: .zero, size: size))
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return image ?? UIImage()
     }
 }

@@ -2,7 +2,7 @@
 //  Colors+Extensions.swift
 //  TestGenerativeImages
 //
-//  Created by Michael Zhu on 11/21/23.
+//  Created by fdsa on 11/21/23.
 //
 
 import SwiftUI
