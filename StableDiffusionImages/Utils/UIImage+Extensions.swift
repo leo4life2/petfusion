@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PencilKit
 
 extension UIImage {
     func scalePreservingAspectRatio(targetSize: CGSize) -> UIImage {
@@ -72,5 +73,29 @@ extension UIImage {
         UIGraphicsEndImageContext()
         
         return image ?? UIImage()
+    }
+    
+    static func imageWithWhiteBackground(from canvasView: PKCanvasView) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: canvasView.bounds)
+        let image = renderer.image { ctx in
+            // Fill the background with white color
+            UIColor.white.setFill()
+            ctx.fill(canvasView.bounds)
+            
+            // Draw the canvas view's drawing on top of the white background
+            canvasView.drawHierarchy(in: canvasView.bounds, afterScreenUpdates: true)
+        }
+        return image
+    }
+    
+    func invertColors() -> UIImage? {
+        guard let ciImage = CIImage(image: self) else { return nil }
+        if let filter = CIFilter(name: "CIColorInvert") {
+            filter.setValue(ciImage, forKey: kCIInputImageKey)
+            if let outputCIImage = filter.outputImage {
+                return UIImage(cgImage: CIContext(options: nil).createCGImage(outputCIImage, from: outputCIImage.extent)!)
+            }
+        }
+        return nil
     }
 }

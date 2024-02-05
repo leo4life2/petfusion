@@ -145,6 +145,7 @@ struct EditorView: View {
 
     // indicates whether we should show an error alert
     @State var showAlert: Bool = false
+    @State var error: LocalizedError?
     // indicates whether we should show the debug modal view
     @State var showDebugView: Bool = false
     // a loading screen displayed when waiting for results from the API
@@ -167,15 +168,29 @@ struct EditorView: View {
         }
         .onAppear(perform: {
             Task {
-                // update the edited image struct with relevant state
+                // update the edited image struct with the prompt
                 self.selectedImage.updatePrompt(prompt: self.imagePrompt)
-                self.selectedImage.updateMask(maskImage: await self.canvasView.drawing.image(from: self.canvasView.bounds, scale: 1.0).scalePreservingAspectRatio(targetSize: self.selectedImage.image.size))
+                // update the edited image struct with the mask
+                var canvasImage: UIImage = DEFAULT_EMPTY_IMAGE
+                DispatchQueue.main.sync {
+                    // grab the mask, edit the background to be white
+                    // then, invert colors so that the drawn areas are white
+                    canvasImage = UIImage.imageWithWhiteBackground(from: self.canvasView).scalePreservingAspectRatio(targetSize: self.selectedImage.image.size).invertColors()!
+                }
+                self.selectedImage.updateMask(maskImage: canvasImage)
                 
                 // grab results from the Diffusion API
                 var image: UIImage
                 do {
-                    image = try await DiffusionAPI().img2img(prompt: self.imagePrompt)
+                    image = try await DiffusionAPI().img2img(
+                        prompt: self.imagePrompt,
+                        promptimage: self.selectedImage.image,
+                        promptmask: self.selectedImage.maskImage
+                    )
                 } catch {
+                    if let error = error as? LocalizedError {
+                        self.error = error
+                    }
                     self.showAlert = true
                     return
                 }
@@ -204,8 +219,8 @@ struct EditorView: View {
         })
         .alert(isPresented: $showAlert, content: {
             Alert(
-                title: Text("Failed to generate image"),
-                message: Text("Please try again"),
+                title: Text("Failed to generate image, please try again"),
+                message: Text("\(self.error?.failureReason ?? "Unknown Reason")"),
                 dismissButton: .default(Text("Dismiss"), action: {
                     // if there is an error, exit the editor modal view when the user dismisses the alert
                     self.presentationMode.wrappedValue.dismiss()
