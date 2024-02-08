@@ -14,7 +14,8 @@ import SwiftUI
 struct ImageDrawingView: UIViewRepresentable {
 
     @Binding var strokeSize: Double
-    let strokeColor = Color(hex: "#7E76FA")
+//    let strokeColor = Color(hex: "#7E76FA")
+    let strokeColor = Color.black
     var canvasView: PKCanvasView
 
     func makeUIView(context: Context) -> PKCanvasView {
