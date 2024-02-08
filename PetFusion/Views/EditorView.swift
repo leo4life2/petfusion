@@ -9,6 +9,12 @@ import Foundation
 import SwiftUI
 import PencilKit
 
+extension UIApplication {
+    func dismissKeyboard() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
 struct EditorView: View {
     // The image selected by the user to edit. Defaults to a blank white 1024x1024 image
     @State var selectedImage: EditedImage = EditedImage()
@@ -58,6 +64,9 @@ struct EditorView: View {
                 self.presentImagePicker = true
             }
         })
+        .onTapGesture {
+            UIApplication.shared.dismissKeyboard()
+        }
     }
     
     // user-inputted prompt for the image
