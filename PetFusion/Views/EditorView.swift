@@ -175,7 +175,7 @@ struct EditorView: View {
                 DispatchQueue.main.sync {
                     // grab the mask, edit the background to be white
                     // then, invert colors so that the drawn areas are white
-                    canvasImage = UIImage.imageWithWhiteBackground(from: self.canvasView).scalePreservingAspectRatio(targetSize: self.selectedImage.image.size).invertColors()!
+                    canvasImage = UIImage.imageWithWhiteBackground(from: self.canvasView).invertColors()!.scalePreservingAspectRatio(targetSize: self.selectedImage.image.size)
                 }
                 self.selectedImage.updateMask(maskImage: canvasImage)
                 

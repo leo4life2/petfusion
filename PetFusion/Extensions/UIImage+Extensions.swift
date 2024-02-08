@@ -18,8 +18,8 @@ extension UIImage {
 
         // Compute the new image size that preserves aspect ratio
         let scaledImageSize = CGSize(
-            width: size.width * scaleFactor,
-            height: size.height * scaleFactor
+            width: (size.width * scaleFactor).rounded(.up),
+            height: (size.height * scaleFactor).rounded(.up)
         )
 
         // Draw and return the resized UIImage
