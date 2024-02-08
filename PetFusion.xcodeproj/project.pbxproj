@@ -24,11 +24,11 @@
 		26EAF3942B662328008DDD7B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAF3932B662328008DDD7B /* MainTabView.swift */; };
 		26EAF3972B662622008DDD7B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAF3962B662622008DDD7B /* ImagePicker.swift */; };
 		26EAF3992B662652008DDD7B /* EditedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAF3982B662652008DDD7B /* EditedImage.swift */; };
-		26EAF39C2B6626E9008DDD7B /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAF39B2B6626E9008DDD7B /* UIImage+Extensions.swift */; };
 		26EAF39E2B663DAA008DDD7B /* LoadingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAF39D2B663DAA008DDD7B /* LoadingCircleView.swift */; };
-		26EAF3A02B663E4B008DDD7B /* Colors+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAF39F2B663E4B008DDD7B /* Colors+Extensions.swift */; };
 		26F2E54D2B68C93B005952EB /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F2E54C2B68C93B005952EB /* ResultView.swift */; };
 		26F2E54F2B68D5BB005952EB /* UserIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F2E54E2B68D5BB005952EB /* UserIntroView.swift */; };
+		B6F9C72C2B746E0E005AA533 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F9C72B2B746E0E005AA533 /* UIImage+Extensions.swift */; };
+		B6F9C72E2B746E14005AA533 /* Colors+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F9C72D2B746E13005AA533 /* Colors+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +76,8 @@
 		26EAF39F2B663E4B008DDD7B /* Colors+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Colors+Extensions.swift"; path = "../../../StableDiffusionImages/Utils/Colors+Extensions.swift"; sourceTree = "<group>"; };
 		26F2E54C2B68C93B005952EB /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		26F2E54E2B68D5BB005952EB /* UserIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIntroView.swift; sourceTree = "<group>"; };
+		B6F9C72B2B746E0E005AA533 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		B6F9C72D2B746E13005AA533 /* Colors+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Colors+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			children = (
 				26CE39AD2B6E2B1E0033DABA /* Info.plist */,
 				26EAF3582B65CF7B008DDD7B /* PetFusionApp.swift */,
+				B6F9C72F2B746E17005AA533 /* Extensions */,
 				26EAF3852B65D572008DDD7B /* Views */,
 				26EAF3862B65D576008DDD7B /* Models */,
 				26EAF39A2B6626D9008DDD7B /* Utils */,
@@ -206,6 +209,15 @@
 				26CE39B22B70328B0033DABA /* ShakeEffect.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		B6F9C72F2B746E17005AA533 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B6F9C72D2B746E13005AA533 /* Colors+Extensions.swift */,
+				B6F9C72B2B746E0E005AA533 /* UIImage+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,8 +353,8 @@
 				26EAF3882B65D58D008DDD7B /* GenerativeImage.swift in Sources */,
 				26EAF3922B65DA54008DDD7B /* SettingsView.swift in Sources */,
 				26EAF3972B662622008DDD7B /* ImagePicker.swift in Sources */,
-				26EAF39C2B6626E9008DDD7B /* UIImage+Extensions.swift in Sources */,
 				26F2E54D2B68C93B005952EB /* ResultView.swift in Sources */,
+				B6F9C72E2B746E14005AA533 /* Colors+Extensions.swift in Sources */,
 				26EAF39E2B663DAA008DDD7B /* LoadingCircleView.swift in Sources */,
 				26CE39B12B70212A0033DABA /* EditorDebugView.swift in Sources */,
 				26CE39AC2B6E15990033DABA /* DiffusionAPI.swift in Sources */,
@@ -350,11 +362,11 @@
 				26EAF3992B662652008DDD7B /* EditedImage.swift in Sources */,
 				26EAF3592B65CF7B008DDD7B /* PetFusionApp.swift in Sources */,
 				26CE39AF2B6F79610033DABA /* ImageDrawingView.swift in Sources */,
-				26EAF3A02B663E4B008DDD7B /* Colors+Extensions.swift in Sources */,
 				26EAF3902B65DA25008DDD7B /* GalleryView.swift in Sources */,
 				26F2E54F2B68D5BB005952EB /* UserIntroView.swift in Sources */,
 				26EAF3942B662328008DDD7B /* MainTabView.swift in Sources */,
 				26CE39B32B70328B0033DABA /* ShakeEffect.swift in Sources */,
+				B6F9C72C2B746E0E005AA533 /* UIImage+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +526,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PetFusion/Preview Content\"";
+				DEVELOPMENT_TEAM = 2NK2JDQHKG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PetFusion/Info.plist;
@@ -535,10 +548,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nemos.PetFusion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -551,6 +565,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PetFusion/Preview Content\"";
+				DEVELOPMENT_TEAM = 2NK2JDQHKG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PetFusion/Info.plist;
@@ -572,10 +587,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nemos.PetFusion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
