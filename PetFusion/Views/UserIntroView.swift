@@ -21,7 +21,7 @@ let INTRODUCTION_CONTENT = [
     IntroSubViewContent(
         image: UIImage(named: "intro001")!,
         headline: "Transform your pet portrait!",
-        description: "Unleash your imagination, and transform images of your pet into anything you can think of\n",
+        description: "Unleash your imagination - transform images of your pet into anything you can think of\n",
         highlightedCircle: 1
     ),
     IntroSubViewContent(

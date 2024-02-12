@@ -14,6 +14,7 @@ import SwiftUI
 struct ImageDrawingView: UIViewRepresentable {
 
     @Binding var strokeSize: Double
+    var isKeyboardVisible: Bool
 //    let strokeColor = Color(hex: "#7E76FA")
     let strokeColor = Color.black
     var canvasView: PKCanvasView
@@ -31,6 +32,7 @@ struct ImageDrawingView: UIViewRepresentable {
     func updateUIView(_ uiView: PKCanvasView, context: Context) {
         // Update the view if needed.
         updateTool(for: uiView)
+        uiView.isUserInteractionEnabled = !isKeyboardVisible
     }
     
     private func updateTool(for canvasView: PKCanvasView) {

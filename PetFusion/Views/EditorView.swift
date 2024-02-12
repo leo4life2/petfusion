@@ -26,6 +26,8 @@ struct EditorView: View {
     @State private var isGeneratingImage = false
     // Used to dismiss EditorView programatically
     @Environment(\.presentationMode) var presentationMode
+    // Used to monitor for presence of the keyboard
+    @StateObject private var keyboardResponder = KeyboardResponder()
 
     // The main view representing the Editor View. Contains subviews for the actual editing, loading, and results
     var body: some View {
@@ -85,7 +87,7 @@ struct EditorView: View {
                 .scaledToFit()
                 .frame(height: UIScreen.main.bounds.height * 0.45)
                 .overlay {
-                    ImageDrawingView(strokeSize: $strokeSize, canvasView: canvasView)
+                    ImageDrawingView(strokeSize: $strokeSize, isKeyboardVisible: self.keyboardResponder.isKeyboardVisible, canvasView: canvasView)
                 }
             
             VStack {
@@ -120,6 +122,7 @@ struct EditorView: View {
                     TextField("A cute thing...", text: $imagePrompt, axis: .vertical)
                         .padding([.leading])
                         .frame(minHeight: 60)
+                        .modifier(KeyboardResponsiveModifier())
                         .background(Color(UIColor.systemGroupedBackground))
                         .shadow(color: .gray, radius: 1)
                         .modifier(ShakeEffect(animatableData: CGFloat(attempts)))

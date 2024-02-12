@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26B473192B79D7410090037C /* KeyboardResponsiveModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B473182B79D7410090037C /* KeyboardResponsiveModifier.swift */; };
+		26B4731B2B79F29C0090037C /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B4731A2B79F29C0090037C /* KeyboardResponder.swift */; };
 		26CE39AC2B6E15990033DABA /* DiffusionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CE39AB2B6E15990033DABA /* DiffusionAPI.swift */; };
 		26CE39AF2B6F79610033DABA /* ImageDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CE39AE2B6F79610033DABA /* ImageDrawingView.swift */; };
 		26CE39B12B70212A0033DABA /* EditorDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CE39B02B70212A0033DABA /* EditorDebugView.swift */; };
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		26B473182B79D7410090037C /* KeyboardResponsiveModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponsiveModifier.swift; sourceTree = "<group>"; };
+		26B4731A2B79F29C0090037C /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 		26CE39AB2B6E15990033DABA /* DiffusionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffusionAPI.swift; sourceTree = "<group>"; };
 		26CE39AD2B6E2B1E0033DABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		26CE39AE2B6F79610033DABA /* ImageDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDrawingView.swift; sourceTree = "<group>"; };
@@ -71,9 +75,7 @@
 		26EAF3932B662328008DDD7B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		26EAF3962B662622008DDD7B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		26EAF3982B662652008DDD7B /* EditedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditedImage.swift; sourceTree = "<group>"; };
-		26EAF39B2B6626E9008DDD7B /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Extensions.swift"; path = "../../../StableDiffusionImages/Utils/UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		26EAF39D2B663DAA008DDD7B /* LoadingCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCircleView.swift; sourceTree = "<group>"; };
-		26EAF39F2B663E4B008DDD7B /* Colors+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Colors+Extensions.swift"; path = "../../../StableDiffusionImages/Utils/Colors+Extensions.swift"; sourceTree = "<group>"; };
 		26F2E54C2B68C93B005952EB /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		26F2E54E2B68D5BB005952EB /* UserIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIntroView.swift; sourceTree = "<group>"; };
 		B6F9C72B2B746E0E005AA533 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
@@ -203,10 +205,10 @@
 		26EAF39A2B6626D9008DDD7B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				26EAF39B2B6626E9008DDD7B /* UIImage+Extensions.swift */,
-				26EAF39F2B663E4B008DDD7B /* Colors+Extensions.swift */,
 				26CE39AB2B6E15990033DABA /* DiffusionAPI.swift */,
 				26CE39B22B70328B0033DABA /* ShakeEffect.swift */,
+				26B473182B79D7410090037C /* KeyboardResponsiveModifier.swift */,
+				26B4731A2B79F29C0090037C /* KeyboardResponder.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -351,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26EAF3882B65D58D008DDD7B /* GenerativeImage.swift in Sources */,
+				26B4731B2B79F29C0090037C /* KeyboardResponder.swift in Sources */,
 				26EAF3922B65DA54008DDD7B /* SettingsView.swift in Sources */,
 				26EAF3972B662622008DDD7B /* ImagePicker.swift in Sources */,
 				26F2E54D2B68C93B005952EB /* ResultView.swift in Sources */,
@@ -366,6 +369,7 @@
 				26F2E54F2B68D5BB005952EB /* UserIntroView.swift in Sources */,
 				26EAF3942B662328008DDD7B /* MainTabView.swift in Sources */,
 				26CE39B32B70328B0033DABA /* ShakeEffect.swift in Sources */,
+				26B473192B79D7410090037C /* KeyboardResponsiveModifier.swift in Sources */,
 				B6F9C72C2B746E0E005AA533 /* UIImage+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -540,6 +544,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -579,6 +584,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";

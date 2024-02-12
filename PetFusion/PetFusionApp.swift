@@ -9,12 +9,6 @@ import SwiftUI
 import SwiftData
 
 /**
- * Todo:
- *  - test server request E2E
- *  - general code audit and cleanup
- */
-
-/**
  Before Ship:
  - fix "App Transport Security Settings"
  - figure out better way to store API Key?
