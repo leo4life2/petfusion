@@ -184,11 +184,14 @@ struct EditorView: View {
                 self.selectedImage.updatePrompt(prompt: self.imagePrompt)
                 // update the edited image struct with the mask
                 var canvasImage: UIImage = DEFAULT_EMPTY_IMAGE
-                DispatchQueue.main.sync {
-                    // grab the mask, edit the background to be white
-                    // then, invert colors so that the drawn areas are white
-                    canvasImage = UIImage.imageWithWhiteBackground(from: self.canvasView).invertColors()!.scalePreservingAspectRatio(targetSize: self.selectedImage.image.size)
-                }
+                // grab the mask, edit the background to be white
+                // then, invert colors so that the drawn areas are white
+                let imageWithWhiteBackground = UIImage.imageWithWhiteBackground(from: self.canvasView)
+                let invertedImage = imageWithWhiteBackground.invertColors()
+                let scaledInvertedImage = invertedImage!.scalePreservingAspectRatio(targetSize: self.selectedImage.image.size)
+
+                canvasImage = scaledInvertedImage
+                
                 self.selectedImage.updateMask(maskImage: canvasImage)
                 
                 // grab results from the Diffusion API
