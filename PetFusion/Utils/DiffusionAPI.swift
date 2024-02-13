@@ -149,7 +149,7 @@ struct DiffusionAPI {
         
         request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.timeoutInterval = 30
+        request.timeoutInterval = 60
         
         guard let imageData = image.jpegData(compressionQuality: 0.7)?.base64EncodedString() else {
             throw DiffusionAPIError.invalidImageError
