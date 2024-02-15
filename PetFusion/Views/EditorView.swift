@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import PencilKit
+import VisionKit
 
 extension UIApplication {
     func dismissKeyboard() {
@@ -24,6 +25,13 @@ struct EditorView: View {
     @State private var presentImagePicker = false
     // Indicates whether we are waiting on an API response, used to display the loading animation
     @State private var isGeneratingImage = false
+    // Switching between auto or manual mask painting
+    @State private var isAutoDetectionMode = false
+    // For auto detected results
+    @State private var maskImage: UIImage?
+    // To make the wand red, indicating failure
+    @State private var autodetectDidFail = false
+    
     // Used to dismiss EditorView programatically
     @Environment(\.presentationMode) var presentationMode
     // Used to monitor for presence of the keyboard
@@ -80,6 +88,7 @@ struct EditorView: View {
     // main PencilKit canvas view used to draw the mask
     var canvasView: PKCanvasView = PKCanvasView()
     // main editor view, displaying the image and tools for drawing a mask and adding a prompt
+    
     var editorView: some View {
         VStack {
             Image(uiImage: selectedImage.image)
@@ -87,7 +96,40 @@ struct EditorView: View {
                 .scaledToFit()
                 .frame(height: UIScreen.main.bounds.height * 0.45)
                 .overlay {
-                    ImageDrawingView(strokeSize: $strokeSize, isKeyboardVisible: self.keyboardResponder.isKeyboardVisible, canvasView: canvasView)
+                    if let maskImage = maskImage {
+                        GeometryReader { geo in
+                            Image(uiImage: maskImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill) // Fill the available space
+                                .frame(width: geo.size.width, height: geo.size.height) // Match the parent frame
+                                .opacity(0.5) // Half opacity
+                        }
+                    } else {
+                        ImageDrawingView(strokeSize: $strokeSize, isKeyboardVisible: self.keyboardResponder.isKeyboardVisible, canvasView: canvasView)
+                    }
+                }
+                .overlay(alignment: .bottomLeading) {
+                    Button(action: {
+                        isAutoDetectionMode.toggle()
+                        if isAutoDetectionMode {
+                            guard let cgImage = selectedImage.image.cgImage else { return }
+                            do {
+                                let maskImage = try SubjectLifter.getSubjectMask(from: cgImage)
+                                self.maskImage = maskImage
+                            } catch {
+                                isAutoDetectionMode.toggle()
+                                autodetectDidFail = true
+                                print("No subjects detected")
+                            }
+                        } else {
+                            maskImage = nil
+                        }
+                    }) {
+                        Image(systemName: autodetectDidFail ? "person.crop.circle.badge.questionmark" : "wand.and.stars")
+                            .foregroundColor(isAutoDetectionMode ? .accentColor : autodetectDidFail ? .red : .white)
+                            .shadow(color: .black, radius: 2)
+                    }
+                    .padding()
                 }
             
             VStack {
@@ -182,17 +224,22 @@ struct EditorView: View {
             Task {
                 // update the edited image struct with the prompt
                 self.selectedImage.updatePrompt(prompt: self.imagePrompt)
-                // update the edited image struct with the mask
-                var canvasImage: UIImage = DEFAULT_EMPTY_IMAGE
-                // grab the mask, edit the background to be white
-                // then, invert colors so that the drawn areas are white
-                let imageWithWhiteBackground = UIImage.imageWithWhiteBackground(from: self.canvasView)
-                let invertedImage = imageWithWhiteBackground.invertColors()
-                let scaledInvertedImage = invertedImage!.scalePreservingAspectRatio(targetSize: self.selectedImage.image.size)
-
-                canvasImage = scaledInvertedImage
                 
-                self.selectedImage.updateMask(maskImage: canvasImage)
+                if let mask = self.maskImage {
+                    // AI detected mask
+                    self.selectedImage.updateMask(maskImage: mask)
+                } else {
+                    // update the edited image struct with the mask
+                    var canvasImage: UIImage = DEFAULT_EMPTY_IMAGE
+                    // grab the mask, edit the background to be white
+                    // then, invert colors so that the drawn areas are white
+                    let imageWithWhiteBackground = UIImage.imageWithWhiteBackground(from: self.canvasView)
+                    let invertedImage = imageWithWhiteBackground.invertColors()
+                    let scaledInvertedImage = invertedImage!.scalePreservingAspectRatio(targetSize: self.selectedImage.image.size)
+                    
+                    canvasImage = scaledInvertedImage
+                    self.selectedImage.updateMask(maskImage: canvasImage)
+                }
                 
                 // grab results from the Diffusion API
                 var image: UIImage
