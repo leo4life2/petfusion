@@ -24,6 +24,26 @@ struct GalleryView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
+                if (images.count == 0) {
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Text("Petfusion!")
+                                .padding([.leading, .top])
+                                .font(.system(size: 25))
+                                .bold()
+                                .foregroundColor(Color(hex: "#7E76FA"))
+                        }
+                        .padding()
+                        HStack {
+                            Text("Go to the Editor tab to get started! 😃")
+                        }
+                        HStack {
+                            Text("Your generated images will appear here")
+                        }
+                        Spacer()
+                    }
+                }
                 ScrollView {
                     HStack {
                         Text("Gallery")
@@ -97,8 +117,8 @@ struct GalleryView: View {
 
 #Preview {
     let container = PetFusionApp.sharedModelContainer
-    container.mainContext.insert(GenerativeImage(id: UUID(), prompt: "foobar", imageData: UIImage(named: "testimg1")!.jpegData(compressionQuality: 0.75)!))
-    container.mainContext.insert(GenerativeImage(id: UUID(), prompt: "foobar", imageData: UIImage(named: "testimg2")!.jpegData(compressionQuality: 0.75)!))
-    container.mainContext.insert(GenerativeImage(id: UUID(), prompt: "foobar", imageData: UIImage(named: "testimg3")!.jpegData(compressionQuality: 0.75)!))
+//    container.mainContext.insert(GenerativeImage(id: UUID(), prompt: "foobar", imageData: UIImage(named: "testimg1")!.jpegData(compressionQuality: 0.75)!))
+//    container.mainContext.insert(GenerativeImage(id: UUID(), prompt: "foobar", imageData: UIImage(named: "testimg2")!.jpegData(compressionQuality: 0.75)!))
+//    container.mainContext.insert(GenerativeImage(id: UUID(), prompt: "foobar", imageData: UIImage(named: "testimg3")!.jpegData(compressionQuality: 0.75)!))
     return GalleryView()
 }

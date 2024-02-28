@@ -15,9 +15,17 @@ struct ResultView: View {
         if let image = image {
             VStack {
                 Spacer()
-                Image(uiImage: image.toUIImage())
-                    .resizable()
-                    .frame(height: UIScreen.main.bounds.height * 0.45)
+                VStack {
+                    Image(uiImage: image.toUIImage())
+                        .resizable()
+                        .frame(height: UIScreen.main.bounds.height * 0.45)
+                        .padding([.bottom])
+                    HStack {
+                        Spacer()
+                        Text("\(image.prompt)")
+                        Spacer()
+                    }
+                }
                 Spacer()
                 
                 ZStack {
@@ -42,4 +50,8 @@ struct ResultView: View {
             }
         }
     }
+}
+
+#Preview {
+    ResultView(image: GenerativeImage(id: UUID(), prompt: "foobar", imageData: UIImage(named: "testimg2")!.jpegData(compressionQuality: 0.75)!))
 }

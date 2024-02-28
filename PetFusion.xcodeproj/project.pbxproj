@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		26B473192B79D7410090037C /* KeyboardResponsiveModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B473182B79D7410090037C /* KeyboardResponsiveModifier.swift */; };
 		26B4731B2B79F29C0090037C /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B4731A2B79F29C0090037C /* KeyboardResponder.swift */; };
+		26B4731D2B8AF8BC0090037C /* RateLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B4731C2B8AF8BC0090037C /* RateLimiter.swift */; };
 		26CE39AC2B6E15990033DABA /* DiffusionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CE39AB2B6E15990033DABA /* DiffusionAPI.swift */; };
 		26CE39AF2B6F79610033DABA /* ImageDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CE39AE2B6F79610033DABA /* ImageDrawingView.swift */; };
 		26CE39B12B70212A0033DABA /* EditorDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CE39B02B70212A0033DABA /* EditorDebugView.swift */; };
@@ -22,7 +23,7 @@
 		26EAF3882B65D58D008DDD7B /* GenerativeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAF3872B65D58D008DDD7B /* GenerativeImage.swift */; };
 		26EAF38E2B65D9E3008DDD7B /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAF38D2B65D9E3008DDD7B /* EditorView.swift */; };
 		26EAF3902B65DA25008DDD7B /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAF38F2B65DA25008DDD7B /* GalleryView.swift */; };
-		26EAF3922B65DA54008DDD7B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAF3912B65DA54008DDD7B /* SettingsView.swift */; };
+		26EAF3922B65DA54008DDD7B /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAF3912B65DA54008DDD7B /* InfoView.swift */; };
 		26EAF3942B662328008DDD7B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAF3932B662328008DDD7B /* MainTabView.swift */; };
 		26EAF3972B662622008DDD7B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAF3962B662622008DDD7B /* ImagePicker.swift */; };
 		26EAF3992B662652008DDD7B /* EditedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAF3982B662652008DDD7B /* EditedImage.swift */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		26B473182B79D7410090037C /* KeyboardResponsiveModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponsiveModifier.swift; sourceTree = "<group>"; };
 		26B4731A2B79F29C0090037C /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
+		26B4731C2B8AF8BC0090037C /* RateLimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateLimiter.swift; sourceTree = "<group>"; };
 		26CE39AB2B6E15990033DABA /* DiffusionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffusionAPI.swift; sourceTree = "<group>"; };
 		26CE39AD2B6E2B1E0033DABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		26CE39AE2B6F79610033DABA /* ImageDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDrawingView.swift; sourceTree = "<group>"; };
@@ -72,7 +74,7 @@
 		26EAF3872B65D58D008DDD7B /* GenerativeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerativeImage.swift; sourceTree = "<group>"; };
 		26EAF38D2B65D9E3008DDD7B /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		26EAF38F2B65DA25008DDD7B /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
-		26EAF3912B65DA54008DDD7B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		26EAF3912B65DA54008DDD7B /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		26EAF3932B662328008DDD7B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		26EAF3962B662622008DDD7B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		26EAF3982B662652008DDD7B /* EditedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditedImage.swift; sourceTree = "<group>"; };
@@ -177,7 +179,7 @@
 				26EAF3932B662328008DDD7B /* MainTabView.swift */,
 				26EAF38F2B65DA25008DDD7B /* GalleryView.swift */,
 				26EAF38D2B65D9E3008DDD7B /* EditorView.swift */,
-				26EAF3912B65DA54008DDD7B /* SettingsView.swift */,
+				26EAF3912B65DA54008DDD7B /* InfoView.swift */,
 				26EAF3952B662615008DDD7B /* SubViews */,
 			);
 			path = Views;
@@ -212,6 +214,7 @@
 				26B473182B79D7410090037C /* KeyboardResponsiveModifier.swift */,
 				26B4731A2B79F29C0090037C /* KeyboardResponder.swift */,
 				B61D17BE2B7D746600F32E4E /* SubjectDetector.swift */,
+				26B4731C2B8AF8BC0090037C /* RateLimiter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -358,7 +361,8 @@
 				26EAF3882B65D58D008DDD7B /* GenerativeImage.swift in Sources */,
 				26B4731B2B79F29C0090037C /* KeyboardResponder.swift in Sources */,
 				B61D17BF2B7D746600F32E4E /* SubjectDetector.swift in Sources */,
-				26EAF3922B65DA54008DDD7B /* SettingsView.swift in Sources */,
+				26EAF3922B65DA54008DDD7B /* InfoView.swift in Sources */,
+				26B4731D2B8AF8BC0090037C /* RateLimiter.swift in Sources */,
 				26EAF3972B662622008DDD7B /* ImagePicker.swift in Sources */,
 				26F2E54D2B68C93B005952EB /* ResultView.swift in Sources */,
 				B6F9C72E2B746E14005AA533 /* Colors+Extensions.swift in Sources */,
@@ -534,10 +538,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PetFusion/Preview Content\"";
-				DEVELOPMENT_TEAM = 2NK2JDQHKG;
+				DEVELOPMENT_TEAM = 6XK4RK75DZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PetFusion/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save generated images";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -554,7 +559,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nemos.PetFusion;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nemos.PetFusionTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -574,10 +579,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PetFusion/Preview Content\"";
-				DEVELOPMENT_TEAM = 2NK2JDQHKG;
+				DEVELOPMENT_TEAM = 6XK4RK75DZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PetFusion/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save generated images";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -594,7 +600,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nemos.PetFusion;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nemos.PetFusionTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -612,6 +618,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6XK4RK75DZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MACOSX_DEPLOYMENT_TARGET = 14.1;
@@ -634,6 +641,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6XK4RK75DZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MACOSX_DEPLOYMENT_TARGET = 14.1;
@@ -655,6 +663,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6XK4RK75DZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MACOSX_DEPLOYMENT_TARGET = 14.1;
@@ -676,6 +685,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6XK4RK75DZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MACOSX_DEPLOYMENT_TARGET = 14.1;

@@ -34,26 +34,36 @@ struct LoadingCircleView: View {
     let animationDuration: Double = 0.75
 
     var body: some View {
-        ZStack {
-            Circle()
-                .stroke(lineWidth: 20)
-                .fill(circleTrackGradient)
-                .shadow(color: .label.opacity(0.015), radius: 5, x: 1, y: 1)
-
-            Circle()
-                .trim(from: circleStart, to: circleEnd)
-                .stroke(style: StrokeStyle(lineWidth: 15, lineCap: .round))
-                .fill(circleFillGradient)
-                .rotationEffect(rotationDegree)
-        }
-        .frame(width: 250, height: 250)
-        .onAppear() {
-            animateLoader()
-
-            // loop the animation
-            Timer.scheduledTimer(withTimeInterval: (trackerRotation * animationDuration) + animationDuration, repeats: true) { loadingTimer in
-                self.animateLoader()
+        VStack {
+            ZStack {
+                Circle()
+                    .stroke(lineWidth: 20)
+                    .fill(circleTrackGradient)
+                    .shadow(color: .label.opacity(0.015), radius: 5, x: 1, y: 1)
+                
+                Circle()
+                    .trim(from: circleStart, to: circleEnd)
+                    .stroke(style: StrokeStyle(lineWidth: 15, lineCap: .round))
+                    .fill(circleFillGradient)
+                    .rotationEffect(rotationDegree)
             }
+            .frame(width: 250, height: 250)
+            .onAppear() {
+                animateLoader()
+                
+                // loop the animation
+                Timer.scheduledTimer(withTimeInterval: (trackerRotation * animationDuration) + animationDuration, repeats: true) { loadingTimer in
+                    self.animateLoader()
+                }
+            }
+            .padding()
+            HStack {
+                VStack {
+                    Text("Generating image...")
+                    Text("This could take up to 30 seconds")
+                }
+            }
+            .padding()
         }
     }
 

@@ -178,7 +178,7 @@ struct DiffusionAPI {
             "mask_blur": 4,
             "mask": maskData,
             "inpainting_fill": 0,
-            "inpainting_mask_invert": 0,
+            "inpainting_mask_invert": 1,
             "alwayson_scripts": [
                 "controlnet": [
                     "args": [

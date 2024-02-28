@@ -32,8 +32,8 @@ struct MainTabView: View {
                 }
                 .tag(2)
         
-            SettingsView()
-                .tabItem { Label("Settings", systemImage: "gear") }
+            InfoView()
+                .tabItem { Label("Info", systemImage: "info.square") }
                 .tag(3)
         })
         .onChange(of: currentTabSelection) { oldValue, newValue in
@@ -46,7 +46,7 @@ struct MainTabView: View {
             }
         }
         .sheet(isPresented: $presentEditorView, content: {
-            EditorView()
+            EditorView(editorViewModel: EditorViewModel.shared)
         })
     }
 }
